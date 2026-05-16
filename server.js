@@ -515,7 +515,7 @@ const ALL_CHALLENGES = [
 
 app.get('/get-static-challenges', (req, res) => {
   let startId = parseInt(req.query.startId) || 1;
-  const limit = 14; // 💡 تم التعديل لجلب 14 موقفاً في كل دفعة
+  const limit = 12; // 💡 تم التعديل لجلب 14 موقفاً في كل دفعة
 
   console.log(`[Static System] 📲 الهاتف يطلب ابتداءً من ID: ${startId}`);
 
