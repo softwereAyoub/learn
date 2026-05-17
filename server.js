@@ -536,13 +536,22 @@ app.get('/get-static-challenges', (req, res) => {
   // 🧠 حساب هل توجد أسئلة كافية لضغطة أخرى قادمة؟
   const hasMore = calculatedNextId <= ALL_CHALLENGES.length;
 const limitMoreButton=1;
+const SponsoredCard={
+  active:true,
+  imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgqHMywMRdOsfBxKcJ_RwEC0vk6PgI0fEnuA&s",
+  title:"تعلم ثلاث ستيل - قناة تعليمية ترفيهية",
+  buttonText:"اشترك الآن",
+  urlDirection:"https://www.youtube.com/@learn-three-steel",
+  index:3
+}
   return res.json({
     ar: {
       supported: true,
       nextId: calculatedNextId,
       hasMore: hasMore,
       data: paginatedData,
-      limitMoreButton: limitMoreButton
+      limitMoreButton: limitMoreButton,
+      SponsoredCard: SponsoredCard
     }
   });
 });
