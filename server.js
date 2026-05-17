@@ -511,7 +511,7 @@ const ALL_CHALLENGES = [
 //     }
 //   });
 // });
-
+// learn-three-steel.vercel.app
 
 app.get('/get-static-challenges', (req, res) => {
   let startId = parseInt(req.query.startId) || 1;
@@ -535,13 +535,14 @@ app.get('/get-static-challenges', (req, res) => {
 
   // 🧠 حساب هل توجد أسئلة كافية لضغطة أخرى قادمة؟
   const hasMore = calculatedNextId <= ALL_CHALLENGES.length;
-
+const limitMoreButton=1;
   return res.json({
     ar: {
       supported: true,
       nextId: calculatedNextId,
       hasMore: hasMore,
-      data: paginatedData
+      data: paginatedData,
+      limitMoreButton: limitMoreButton
     }
   });
 });
