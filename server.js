@@ -542,6 +542,8 @@ const SponsoredCard={
   title:"تعلم ثلاث ستيل - قناة تعليمية ترفيهية",
   buttonText:"اشترك الآن",
   urlDirection:"https://www.youtube.com/@learn-three-steel",
+  height:100,
+  width:'100%',
   index:3
 }
   return res.json({
