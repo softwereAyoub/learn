@@ -520,7 +520,7 @@ app.get('/get-static-challenges', (req, res) => {
   console.log(`[Static System] 📲 الهاتف يطلب ابتداءً من ID: ${startId}`);
 
   // 1. فلترة وتجهيز الدفعة المطلوبة (14 عنصراً)
-  let paginatedData = ALL_CHALLENGES.filter(challenge => challenge.id >= startId && challenge.id < startId + limit);
+  let paginatedData = ALL_CHALLENGES.filter(challenge => challenge.id >= startId);
 
   // 2. حساب الـ nextId القادم (يقفز بمقدار طول البيانات الفعلي المجلوبة)
   let calculatedNextId = startId + paginatedData.length;
@@ -539,7 +539,7 @@ const limitMoreButton=1;
   return res.json({
     ar: {
       supported: true,
-      nextId: paginatedData.length > 0 ? paginatedData.length : 1, // إذا لم يتم جلب أي بيانات، لا نغير الـ nextId
+      nextId: calculatedNextId,
       hasMore: hasMore,
       data: paginatedData,
       limitMoreButton: limitMoreButton
