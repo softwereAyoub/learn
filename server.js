@@ -520,10 +520,10 @@ app.get('/get-static-challenges', (req, res) => {
   console.log(`[Static System] 📲 الهاتف يطلب ابتداءً من ID: ${startId}`);
 
   // 1. فلترة وتجهيز الدفعة المطلوبة (14 عنصراً)
-  let paginatedData = ALL_CHALLENGES.filter(challenge => challenge.id >= startId);
+  let paginatedData = ALL_CHALLENGES.filter(challenge => challenge.id > startId);
 
   // 2. حساب الـ nextId القادم (يقفز بمقدار طول البيانات الفعلي المجلوبة)
-  let calculatedNextId = startId + limit;
+  let calculatedNextId = startId + paginatedData.length;
 
   // 🛡️ شرط الحماية الصارم (إذا طلب الهاتف ID خارج النطاق أو تسبب في مصفوفة فارغة)
   if (paginatedData.length === 0 && ALL_CHALLENGES.length > 0) {
