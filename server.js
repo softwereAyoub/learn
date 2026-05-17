@@ -523,7 +523,7 @@ app.get('/get-static-challenges', (req, res) => {
   let paginatedData = ALL_CHALLENGES.filter(challenge => challenge.id >= startId);
 
   // 2. حساب الـ nextId القادم (يقفز بمقدار طول البيانات الفعلي المجلوبة)
-  let calculatedNextId = startId + paginatedData.length;
+  let calculatedNextId = startId + limit;
 
   // 🛡️ شرط الحماية الصارم (إذا طلب الهاتف ID خارج النطاق أو تسبب في مصفوفة فارغة)
   if (paginatedData.length === 0 && ALL_CHALLENGES.length > 0) {
