@@ -539,7 +539,7 @@ const limitMoreButton=1;
   return res.json({
     ar: {
       supported: true,
-      nextId: calculatedNextId,
+      nextId: paginatedData.length > 0 ? paginatedData.length : 1, // إذا لم يتم جلب أي بيانات، لا نغير الـ nextId
       hasMore: hasMore,
       data: paginatedData,
       limitMoreButton: limitMoreButton
