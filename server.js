@@ -535,9 +535,9 @@ app.get('/get-static-challenges', (req, res) => {
 
   // 🧠 حساب هل توجد أسئلة كافية لضغطة أخرى قادمة؟
   const hasMore = calculatedNextId <= ALL_CHALLENGES.length;
-const limitMoreButton=1;
+const limitMoreButton=0;
 const SponsoredCard={
-  active:true,
+  active:false,
   imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgqHMywMRdOsfBxKcJ_RwEC0vk6PgI0fEnuA&s",
   title:"تعلم ثلاث ستيل - قناة تعليمية ترفيهية",
   buttonText:"اشترك الآن",
