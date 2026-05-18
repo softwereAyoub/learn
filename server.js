@@ -535,7 +535,7 @@ app.get('/get-static-challenges', (req, res) => {
 
   // 🧠 حساب هل توجد أسئلة كافية لضغطة أخرى قادمة؟
   const hasMore = calculatedNextId <= ALL_CHALLENGES.length;
-const limitMoreButton=0;
+const limitMoreButton=1;
 const SponsoredCard={
   active:false,
   imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgqHMywMRdOsfBxKcJ_RwEC0vk6PgI0fEnuA&s",
