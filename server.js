@@ -1,12 +1,14 @@
 require('dotenv').config();
 const express = require('express');
-
+const { createClient } = require('@supabase/supabase-js');
+const rateLimit = require('express-rate-limit');
 const app = express();
 app.use(express.json());
 
+
 // 📦 قاعدة البيانات الثابتة (امتلأها يومياً بمواقف الثقافة العامة المشوقة)
 // تأكد من أن كل موقف تضعه يحمل معرف ID تصاعدي (1، 2، 3، 4...)
-const ALL_CHALLENGES = [
+const english = [
   {
     id: 1,
     // خيارات الإجابات ثابتة ومحايدة تناسب الجنسين
@@ -511,33 +513,75 @@ const ALL_CHALLENGES = [
 //     }
 //   });
 // });
-// learn-three-steel.vercel.app
 
-app.get('/get-static-challenges', (req, res) => {
+const insertLimiter = rateLimit({
+  windowMs: 4 * 60 * 1000, // 5 دقائق
+  max: 9, // أقصى حد 3 طلبات فقط من نفس الجهاز
+  message: { error: "لقد تجاوزت الحد المسموح من المحاولات، يرجى الانتظار 4 دقائق." },
+  standardHeaders: true, 
+  legacyHeaders: false, 
+});
+// learn-three-steel.vercel.app
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabase = createClient(supabaseUrl, supabaseServiceKey);
+app.get('/get-static-challenges',insertLimiter, async(req, res) => {
   let startId = parseInt(req.query.startId) || 1;
+    let langue = req.query.langue;
+    let userId = req.query.userId;
+
   const limit = 12; // 💡 تم التعديل لجلب 14 موقفاً في كل دفعة
 
-  console.log(`[Static System] 📲 الهاتف يطلب ابتداءً من ID: ${startId}`);
 
+if (!userId) {
+      return res.status(400).json({ error: "userId is required" });
+    }
+
+    userId = userId.trim().replace(/^["']|["']$/g, '');
+
+  console.log(`[Static System] 📲 الهاتف يطلب ابتداءً من ID: ${startId}`);
+const { data: userProfile, error: supabaseError } = await supabase
+      .from('users_app') // اسم الجدول الخاص بالمستخدمين في قاعدة بياناتك
+      .select('is_payed')
+      .eq('id_users', userId) // الفلترة حسب الـ ID الفريد للمستخدم
+      .single(); // جلب سطر واحد فقط
   // 1. فلترة وتجهيز الدفعة المطلوبة (14 عنصراً)
-  let paginatedData = ALL_CHALLENGES.filter(challenge => challenge.id >= startId && challenge.id < startId + limit);
+
+  if (supabaseError || !userProfile) {
+    console.log("⚠️ Supabase Exact Error:", supabaseError);
+    console.log("📌 الـ ID القادم من التطبيق هو:", `[${userId}]`);
+      return res.status(404).json({ error: "User profile not found" });
+    }
+
+  if(langue == 'english'){
+  let paginatedData = english.filter(challenge => challenge.id >= startId && challenge.id < startId + limit);
+
+ 
 
   // 2. حساب الـ nextId القادم (يقفز بمقدار طول البيانات الفعلي المجلوبة)
   let calculatedNextId = startId + paginatedData.length;
 
   // 🛡️ شرط الحماية الصارم (إذا طلب الهاتف ID خارج النطاق أو تسبب في مصفوفة فارغة)
-  if (paginatedData.length === 0 && ALL_CHALLENGES.length > 0) {
+  if (paginatedData.length === 0 && english.length > 0 && langue == 'english') {
     console.log(`⚠️ [Fallback] المعرّف ${startId} فارغ! تم إعادة التدوير وإرسال الدفعة الأولى.`);
     startId = 1;
-    paginatedData = ALL_CHALLENGES.slice(0, limit);
+    paginatedData = english.slice(0, limit);
     calculatedNextId = startId + paginatedData.length;
   }
 
-  // 🧠 حساب هل توجد أسئلة كافية لضغطة أخرى قادمة؟
-  const hasMore = calculatedNextId <= ALL_CHALLENGES.length;
-const limitMoreButton=1;
+  // 🧠 حساب هل توجد أسئلة كافية لضغطة أخرى قادمة？
+  const hasMore = calculatedNextId <= english.length;
+      var limitMoreButton=0;
+
+  if(userProfile.is_payed){
+    var limitMoreButton='false';
+
+  }else{
+    var limitMoreButton=0;
+  }
+
 const SponsoredCard={
-  active:false,
+  active:true,
   imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgqHMywMRdOsfBxKcJ_RwEC0vk6PgI0fEnuA&s",
   title:"تعلم ثلاث ستيل - قناة تعليمية ترفيهية",
   buttonText:"اشترك الآن",
@@ -546,6 +590,12 @@ const SponsoredCard={
   width:'100%',
   index:3
 }
+
+const languages=[
+  'english',
+  'arabic'
+]
+console.log('bbbbbbbbbbbbbb')
   return res.json({
     ar: {
       supported: true,
@@ -553,10 +603,85 @@ const SponsoredCard={
       hasMore: hasMore,
       data: paginatedData,
       limitMoreButton: limitMoreButton,
-      SponsoredCard: SponsoredCard
+      SponsoredCard: SponsoredCard,
+      SupportedLanguage:languages
     }
   });
+
+
+  
+}else if(langue == 'arabic'){
+  return res.json({
+    ar: {
+      supported: false,
+    } 
 });
+}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.post('/api/users/entry',insertLimiter, async (req, res) => {
+  
+
+  const { name, email, gender, id_users, user_ip } = req.body;
+
+  // فحص أولي للبيانات في السيرفر لزيادة الأمان
+  if (!name || !email || !gender || !id_users) {
+    return res.status(400).json({ error: "جميع الخانات مطلوبة" });
+  }
+
+  try {
+    // تنفيذ عملية الـ Insert في جدول 'test'
+    const { data, error } = await supabase
+      .from('users_app')
+      .insert([{ name, email, gender, id_users, user_ip }])
+      .select();
+
+    if (error) {
+      console.error("Supabase Error:", error.message);
+      return res.status(500).json({ error: "حدث خطأ أثناء حفظ البيانات بقاعدة البيانات" });
+    }
+
+    if (data && data.length > 0) {
+      // إرجاع القيم المطلوبة للتطبيق بنجاح
+      return res.status(201).json({
+        success: true,
+        id: data[0].id,
+        id_users: data[0].id_users
+      });
+    }
+
+    return res.status(400).json({ error: "لم يتم إرجاع أي بيانات" });
+
+  } catch (err) {
+    console.error("Server Catch Error:", err);
+    return res.status(500).json({ error: "خطأ داخلي في السيرفر" });
+  }
+});
+
+
+
+
+
+
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`🚀 سيرفر المواقف الثابتة شغال بأقصى سرعة على البورت ${PORT}`));
