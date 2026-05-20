@@ -1023,7 +1023,7 @@ const { data: userProfile, error: supabaseError } = await supabase
   }
 
   // 🧠 حساب هل توجد أسئلة كافية لضغطة أخرى قادمة？
-  const hasMore = calculatedNextId <= english.length;
+  const hasMore = startId <= english.length;
       var limitMoreButton=1;
 
   if(userProfile.is_payed){
