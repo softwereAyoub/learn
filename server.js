@@ -484,7 +484,7 @@ app.get('/favicon.png', (req, res) => res.status(204).end());
 
 const insertLimiter = rateLimit({
   windowMs: 4 * 60 * 1000, // 5 دقائق
-  max: 9, // أقصى حد 3 طلبات فقط من نفس الجهاز
+  max: 10, // أقصى حد 3 طلبات فقط من نفس الجهاز
   message: { error: "لقد تجاوزت الحد المسموح من المحاولات، يرجى الانتظار 4 دقائق." },
   standardHeaders: true, 
   legacyHeaders: false, 
@@ -549,7 +549,7 @@ const { data: userProfile, error: supabaseError } = await supabase
   }
 
 const SponsoredCard={
-  active:true,
+  active:false,
   imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgqHMywMRdOsfBxKcJ_RwEC0vk6PgI0fEnuA&s",
   title:"تعلم ثلاث ستيل - قناة تعليمية ترفيهية",
   buttonText:"اشترك الآن",
@@ -561,7 +561,6 @@ const SponsoredCard={
 
 const languages=[
   'english',
-  'arabic'
 ]
 console.log('bbbbbbbbbbbbbb')
   return res.json({
