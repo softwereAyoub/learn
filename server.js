@@ -731,6 +731,237 @@ const english = [
       }
     }
   }
+},
+{
+  id: 25,
+  options: [
+    "I'm looking forward to the trip",
+    "I'm waiting the trip",
+    "I'm exciting for the trip"
+  ],
+  correct_index: 0,
+
+  localized_content: {
+    male: {
+      challenge: "يا سيد [Fname]، أنت متحمس للسفر الأسبوع القادم، كيف تعبر بطريقة طبيعية واحترافية بالإنجليزية؟",
+      explanations: {
+        a: "ممتاز يا [Fname]! Looking forward to من أهم التعبيرات اليومية في الإنجليزية.",
+        b: "في الإنجليزية نقول wait for وليس wait فقط يا [Fname].",
+        c: "الصحيح هو excited وليس exciting هنا يا [Fname]."
+      }
+    },
+    female: {
+      challenge: "يا عزيزتي [Fname]، أنتِ متحمسة للسفر الأسبوع القادم، كيف تعبرين بطريقة طبيعية واحترافية بالإنجليزية؟",
+      explanations: {
+        a: "ممتاز يا [Fname]! Looking forward to من أهم التعبيرات اليومية في الإنجليزية.",
+        b: "في الإنجليزية نقول wait for وليس wait فقط يا [Fname].",
+        c: "الصحيح هو excited وليس exciting هنا يا [Fname]."
+      }
+    }
+  }
+},
+
+{
+  id: 26,
+  options: [
+    "I have no idea",
+    "I don't have brain",
+    "I not know nothing"
+  ],
+  correct_index: 0,
+
+  localized_content: {
+    male: {
+      challenge: "يا سيد [Fname]، سُئلت عن شيء لا تعرفه، ما هي العبارة الطبيعية التي تعني 'ليس لدي أي فكرة'؟",
+      explanations: {
+        a: "رائع يا [Fname]! هذه عبارة شائعة جداً في المحادثات اليومية.",
+        b: "هذه الجملة غير طبيعية في الإنجليزية يا [Fname].",
+        c: "الجملة تحتوي أخطاء كثيرة يا [Fname]."
+      }
+    },
+    female: {
+      challenge: "يا عزيزتي [Fname]، سُئلتِ عن شيء لا تعرفينه، ما هي العبارة الطبيعية التي تعني 'ليس لدي أي فكرة'؟",
+      explanations: {
+        a: "رائع يا [Fname]! هذه عبارة شائعة جداً في المحادثات اليومية.",
+        b: "هذه الجملة غير طبيعية في الإنجليزية يا [Fname].",
+        c: "الجملة تحتوي أخطاء كثيرة يا [Fname]."
+      }
+    }
+  }
+},
+
+{
+  id: 27,
+  options: [
+    "Could",
+    "Must",
+    "Should"
+  ],
+  correct_index: 2,
+
+  localized_content: {
+    male: {
+      challenge: "يا سيد [Fname]، صديقك متعب جداً وتريد أن تنصحه بالنوم مبكراً، أي Modal Verb هو الأنسب؟",
+      explanations: {
+        a: "Could تستعمل أكثر للإمكانية أو الطلب المهذب يا [Fname].",
+        b: "Must قوية جداً وكأنها أمر يا [Fname].",
+        c: "أحسنت يا [Fname]! Should تستعمل كثيراً لإعطاء النصائح."
+      }
+    },
+    female: {
+      challenge: "يا عزيزتي [Fname]، صديقتك متعبة جداً وتريدين أن تنصحيها بالنوم مبكراً، أي Modal Verb هو الأنسب؟",
+      explanations: {
+        a: "Could تستعمل أكثر للإمكانية أو الطلب المهذب يا [Fname].",
+        b: "Must قوية جداً وكأنها أمر يا [Fname].",
+        c: "أحسنتِ يا [Fname]! Should تستعمل كثيراً لإعطاء النصائح."
+      }
+    }
+  }
+},
+
+{
+  id: 28,
+  options: [
+    "I'm starving",
+    "I'm freezing",
+    "I'm sleepy"
+  ],
+  correct_index: 0,
+
+  localized_content: {
+    male: {
+      challenge: "يا سيد [Fname]، لم تأكل منذ ساعات طويلة وتريد التعبير أنك جائع جداً، أي كلمة متقدمة تستخدم؟",
+      explanations: {
+        a: "ممتاز يا [Fname]! Starving تعني جائع جداً وتستخدم كثيراً بشكل يومي.",
+        b: "Freezing تعني أشعر ببرودة شديدة يا [Fname].",
+        c: "Sleepy تعني نعسان يا [Fname]."
+      }
+    },
+    female: {
+      challenge: "يا عزيزتي [Fname]، لم تأكلي منذ ساعات طويلة وتريدين التعبير أنكِ جائعة جداً، أي كلمة متقدمة تستخدمين؟",
+      explanations: {
+        a: "ممتاز يا [Fname]! Starving تعني جائعة جداً وتستخدم كثيراً بشكل يومي.",
+        b: "Freezing تعني أشعر ببرودة شديدة يا [Fname].",
+        c: "Sleepy تعني نعسانة يا [Fname]."
+      }
+    }
+  }
+},
+
+{
+  id: 29,
+  options: [
+    "On time",
+    "In time",
+    "At time"
+  ],
+  correct_index: 0,
+
+  localized_content: {
+    male: {
+      challenge: "يا سيد [Fname]، وصلت إلى الاجتماع في الساعة المحددة تماماً، أي تعبير صحيح؟",
+      explanations: {
+        a: "رائع يا [Fname]! On time يعني في الوقت المحدد تماماً.",
+        b: "In time تعني قبل فوات الأوان يا [Fname].",
+        c: "At time ليست التعبير الصحيح هنا يا [Fname]."
+      }
+    },
+    female: {
+      challenge: "يا عزيزتي [Fname]، وصلتِ إلى الاجتماع في الساعة المحددة تماماً، أي تعبير صحيح؟",
+      explanations: {
+        a: "رائع يا [Fname]! On time يعني في الوقت المحدد تماماً.",
+        b: "In time تعني قبل فوات الأوان يا [Fname].",
+        c: "At time ليست التعبير الصحيح هنا يا [Fname]."
+      }
+    }
+  }
+},
+
+{
+  id: 30,
+  options: [
+    "Borrow",
+    "Lend",
+    "Steal"
+  ],
+  correct_index: 0,
+
+  localized_content: {
+    male: {
+      challenge: "يا سيد [Fname]، تريد أن تطلب من صديقك أن يعطيك كتابه مؤقتاً، أي فعل يعبر عن 'أستعير'؟",
+      explanations: {
+        a: "أحسنت يا [Fname]! Borrow يعني يستعير، وهو فعل مهم جداً.",
+        b: "Lend يعني يُعير شخصاً آخر يا [Fname].",
+        c: "Steal تعني يسرق يا [Fname]."
+      }
+    },
+    female: {
+      challenge: "يا عزيزتي [Fname]، تريدين أن تطلبي من صديقتك أن تعطيكِ كتابها مؤقتاً، أي فعل يعبر عن 'أستعير'؟",
+      explanations: {
+        a: "أحسنتِ يا [Fname]! Borrow يعني يستعير، وهو فعل مهم جداً.",
+        b: "Lend يعني يُعير شخصاً آخر يا [Fname].",
+        c: "Steal تعني يسرق يا [Fname]."
+      }
+    }
+  }
+},
+
+{
+  id: 31,
+  options: [
+    "By the way",
+    "In the road",
+    "On the side"
+  ],
+  correct_index: 0,
+
+  localized_content: {
+    male: {
+      challenge: "يا سيد [Fname]، أثناء الحديث تريد إضافة معلومة جديدة بشكل طبيعي، أي expression تستعمل؟",
+      explanations: {
+        a: "ممتاز يا [Fname]! By the way من أكثر العبارات استخداماً في المحادثات.",
+        b: "هذه ليست العبارة المناسبة لهذا المعنى يا [Fname].",
+        c: "التعبير غير صحيح لهذا السياق يا [Fname]."
+      }
+    },
+    female: {
+      challenge: "يا عزيزتي [Fname]، أثناء الحديث تريدين إضافة معلومة جديدة بشكل طبيعي، أي expression تستعملين؟",
+      explanations: {
+        a: "ممتاز يا [Fname]! By the way من أكثر العبارات استخداماً في المحادثات.",
+        b: "هذه ليست العبارة المناسبة لهذا المعنى يا [Fname].",
+        c: "التعبير غير صحيح لهذا السياق يا [Fname]."
+      }
+    }
+  }
+},
+
+{
+  id: 32,
+  options: [
+    "I'm used to waking up early",
+    "I'm used to wake up early",
+    "I use to waking up early"
+  ],
+  correct_index: 0,
+
+  localized_content: {
+    male: {
+      challenge: "يا سيد [Fname]، تريد أن تقول إنك معتاد على الاستيقاظ مبكراً، أي جملة صحيحة؟",
+      explanations: {
+        a: "رائع يا [Fname]! بعد used to هنا نستخدم Verb + ing.",
+        b: "خطأ شائع يا [Fname]، الصيغة الصحيحة تحتاج ing.",
+        c: "الجملة غير صحيحة قواعدياً يا [Fname]."
+      }
+    },
+    female: {
+      challenge: "يا عزيزتي [Fname]، تريدين أن تقولي إنكِ معتادة على الاستيقاظ مبكراً، أي جملة صحيحة؟",
+      explanations: {
+        a: "رائع يا [Fname]! بعد used to هنا نستخدم Verb + ing.",
+        b: "خطأ شائع يا [Fname]، الصيغة الصحيحة تحتاج ing.",
+        c: "الجملة غير صحيحة قواعدياً يا [Fname]."
+      }
+    }
+  }
 }
 ]
 app.get('/favicon.ico', (req, res) => res.status(204).end());
