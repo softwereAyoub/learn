@@ -108,7 +108,7 @@ app.post('/api/verify-key',insertLimiter, async (req, res) => {
         res.cookie('secure_user_key', keyUser, {
             httpOnly: true, // تمنع الـ JavaScript (الفرونت-إند) من سرقة الكوكي لحماية ضد هجمات XSS
             secure: process.env.NODE_ENV === 'production', // تشتغل فقط عبر HTTPS في البيئة الحية الحقيقية
-            sameSite: 'strict', // تمنع إرسال الكوكي مع طلبات المواقع الخارجية لحماية ضد هجمات CSRF
+            // sameSite: 'strict', // تمنع إرسال الكوكي مع طلبات المواقع الخارجية لحماية ضد هجمات CSRF
             maxAge: 30 * 24 * 60 * 60 * 1000 // مدة صلاحية الكوكي بمتصفح العميل (30 يوماً كمثال)
         });
 
@@ -163,7 +163,7 @@ app.post('/api/logout',insertLimiter, (req, res) => {
     res.clearCookie('secure_user_key', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict'
+        // sameSite: 'strict'
     });
     return res.status(200).json({ success: true, message: "تم تسجيل الخروج بنجاح وتطهير الجلسة." });
 });
