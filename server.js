@@ -10,7 +10,7 @@ const PORT = 5000;
 
 // تفعيل الـ CORS لتسمح للـ Front-end (المرفوع على Vercel مثلاً) بالاتصال بالباك-إند
 app.use(cors({
-    origin: 'https://www.direop.com', 
+    origin: 'https://direop.com', 
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
